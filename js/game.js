@@ -94,7 +94,8 @@ var Game = (function() {
         var initialBoard = null;
         var board = null;
         var size = 0;
-        var rules = [];
+        //var rules = [];
+        var livingRules = [];
         var deadRules = [];
         var toProcess = [];
         var end = true;
@@ -135,10 +136,16 @@ var Game = (function() {
                     territory.neighbours = _makeLivingNeighbours(board, index, size);
                 });
 
-                rules = _makeDefaultRules();
-                deadRules = rules.filter(function(rule) {
-                    return rule.on === constructor.DEAD;
+                var rules = _makeDefaultRules();
+                rules.forEach(function(rule) {
+                    if(rule.on === constructor.ALIVE)
+                        livingRules.push(rule);
+                    else
+                        deadRules.push(rule);
                 });
+                // deadRules = rules.filter(function(rule) {
+                //     return rule.on === constructor.DEAD;
+                // });
 
                 toProcess = board.filter(function(territory) {
                     // Currently alive
@@ -180,8 +187,8 @@ var Game = (function() {
                 var newToProcess = [];
                 // For each territory check the conditions to change state in the PREVIOUS board and update in the NEW board
                 toProcess.forEach(function (territory) {
-                    var changed = rules.some(function (rule) {
-                        return rule.on === territory.state && rule.changeCondition(territory);
+                    var changed = territory.state === constructor.DEAD || livingRules.some(function (rule) {
+                        return rule.changeCondition(territory);
                     });
                     var currentTerritoryIndex = territory.row * size + territory.column;
                     if (changed) {

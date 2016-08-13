@@ -16,7 +16,7 @@
     "karma-spec-reporter": "0.0.26"
   },
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS Firefox"
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS,Firefox"
   },
   "repository": {
     "type": "git",

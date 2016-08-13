@@ -3,7 +3,7 @@
  */
 module.exports = function(config) {
     config.set({
-        basePath: '../..',
+        basePath: '',
         preprocessors: {
             './js/**/*': ['jshint']
         },
@@ -11,8 +11,8 @@ module.exports = function(config) {
         browsers: [], // None by default
         exclude: [],
         files: [
-            './js/**/*',
-            './specs/**/*'
+            './js/**/*.js',
+            './specs/**/*.js'
         ],
         reporters: ['progress'],
 

@@ -6,4 +6,4 @@ Conway's Game of Life environment consists of a matrix of cells. Cell can be in 
 - Any live cell with 2 or 3 live neighbours lives on to the next generation.
 - Any dead cell with exactly 3 live neighbours becomes a live cell.
 
-These rules were taken from a nice website which had the implementation which I want to avoid looking at.
+https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life

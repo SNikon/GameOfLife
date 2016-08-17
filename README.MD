@@ -17,6 +17,11 @@ None really, just needed something to try out karma and keep myself interested
 
 TODO
 
- - Separate rules from the game itself [Class-based inheritance? ES6? Meh]
  - Create a visual way to set the root board
  - Create a visual way to display the output
+
+DROPPED
+  - Make inheritance/prototype schema; mainly because I don't feel like I would keep interest long enough
+    to make enough extensions and board game types that would make up for sacrificing the clean private variables that
+    I would need to expose to actually make extendible base game. For this particular one I think I'll stay with the
+    rectangular board and simple game of life.

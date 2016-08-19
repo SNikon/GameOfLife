@@ -143,9 +143,6 @@ var Game = (function() {
                     else
                         deadRules.push(rule);
                 });
-                // deadRules = rules.filter(function(rule) {
-                //     return rule.on === constructor.DEAD;
-                // });
 
                 toProcess = board.filter(function(territory) {
                     // Currently alive
@@ -153,7 +150,7 @@ var Game = (function() {
                         // Or dead and about to change next stage
                         deadRules.some(function(rule) {
                             return rule.changeCondition(territory);
-                        })
+                        });
                 });
             } else {
                 throw new Error('Board must be square')
@@ -219,7 +216,7 @@ var Game = (function() {
         };
 
         this.reset = function() {
-            if(initialBoard == null)
+            if(initialBoard === null)
                 throw new Error('Game not initialized');
 
             board = _copyBoard(initialBoard);
@@ -243,7 +240,7 @@ var Game = (function() {
         return Game.DEAD;
     };
     constructor.makeDefaultPublicBoard = function(size) {
-        if(size == null || (size != (~~size)) || size <= 0)
+        if(size === null || (size !== (~~size)) || size <= 0)
             throw new Error('Invalid size');
 
         var len = size*size;

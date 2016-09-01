@@ -4,7 +4,7 @@
 var GameOutput = (function() {
     "use strict";
 
-    var constructor = function(parent, game) {
+    var constructor = function() {
         var element = null;
         var gameInstance = null;
 
@@ -19,16 +19,22 @@ var GameOutput = (function() {
             }
 
 
-            element = parent;
-            if(typeof element === 'string')
-                element = document.getElementById(parent);
+            var hook = parent;
+            if(typeof hook === 'string')
+                hook = document.getElementById(parent);
 
-            if(!isElement(element)) {
+            if(!isElement(hook)) {
                 gameInstance = null;
-                element = null;
+                hook = null;
                 throw new Error('parent is not a DOM element nor ID string');
             }
 
+            element = document.createElement('canvas');
+            hook.appendChild(element);
+        };
+
+        this.getTarget = function() {
+            return element;
         };
 
         this.tick = function() {
